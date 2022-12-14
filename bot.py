@@ -5,12 +5,13 @@ import uuid
 import speech_recognition as sr
 from aiogram import Bot, Dispatcher, executor, types
 from pydub import AudioSegment
+from dotenv import load_dotenv
 
-import config
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token=config.BOT_API_TOKEN)
+bot = Bot(token=os.getenv('BOT_API_TOKENMY'))
 dp = Dispatcher(bot)
 
 
