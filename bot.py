@@ -11,7 +11,7 @@ load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token=os.getenv('BOT_API_TOKENMY'))
+bot = Bot(token=os.getenv('BOT_API_TOKEN'))
 dp = Dispatcher(bot)
 
 
