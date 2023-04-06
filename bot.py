@@ -139,6 +139,13 @@ async def transcribe_audio(message: types.Message):
         >>> # Sends an audio message to be transcribed
         >>> await transcribe_audio(message)
     """
+    # Send a message to the user to let them know that the bot is working
+    response_message = await bot.send_message(
+        chat_id=message.chat.id,
+        text='Распознаю речь...',
+        reply_to_message_id=message.message_id
+    )
+
     # Convert audio message to .wav
     uuid_name = await convert_in_wav(message)
 
@@ -153,6 +160,12 @@ async def transcribe_audio(message: types.Message):
         chat_id=message.chat.id,
         text=text,
         reply_to_message_id=message.message_id
+    )
+
+    # Delete the message that the bot sent to let the user know that it is working
+    await bot.delete_message(
+        chat_id=message.chat.id,
+        message_id=response_message.message_id
     )
 
 
