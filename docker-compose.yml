@@ -1,5 +1,13 @@
-version: '3.11'
+version: '3.8'
 services:
-  api:
-    build: .
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONBUFFERED=1
     command: python bot.py
+    volumes:
+      - .:/app
